@@ -1,18 +1,11 @@
-#define BUILDING_NODE_EXTENSION
+#include <nan.h>
 
-#include <node.h>
-#include <v8.h>
-
-namespace {
-    v8::Handle<v8::Value> Collect(const v8::Arguments& args){
-        v8::HandleScope scope;
-        while(!v8::V8::IdleNotification()){ };
-        return scope.Close(v8::Undefined());
-    }
-
-    void Init(v8::Handle<v8::Object> target){
-        NODE_SET_METHOD(target, "collect", Collect);
-    }
+NAN_METHOD(Collect) {
+  info.GetIsolate()->IdleNotificationDeadline(5.0);
 }
 
-NODE_MODULE(gc, Init)
+void Init(v8::Handle<v8::Object> target){
+  Nan::SetMethod(target, "collect", Collect);
+}
+
+NODE_MODULE(gc, Init);
