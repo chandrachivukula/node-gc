@@ -1,7 +1,7 @@
 #include <nan.h>
 
 NAN_METHOD(Collect) {
-  info.GetIsolate()->IdleNotificationDeadline(5.0);
+  info.GetIsolate()->IdleNotificationDeadline(0.5);
 }
 
 void Init(v8::Handle<v8::Object> target){
