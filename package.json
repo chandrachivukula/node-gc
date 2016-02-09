@@ -1,6 +1,6 @@
 {
   "name": "@paulcbetts/gc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A thin pseudo-wrapper around the v8 garbage collector.",
   "main": "index.js",
   "scripts": {
